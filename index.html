@@ -104,11 +104,11 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <p>第一篇文章，就用來簡單記錄如何用hexo建立個人部落格。</p>
-<p>（本篇是在Mac和vscode上操作）</p>
-<p>Hexo 是一個快速又簡單上手的部落格框架。相比於其他部落格平台，客製化空間非常大，重點是完全免費～～作為一個剛起步的工程師和部落客，實在是太值得一試了！</p>
+<p>（本篇範例是在Mac和vscode上操作）</p>
+<p>Hexo 是一個快速又簡單上手的部落格框架。相比於其他部落格平台，客製化空間非常大，重點是完全免費！作為一個剛起步的工程師和部落客，實在是太～香～了～</p>
 <p>在這篇文章中，我將介紹如何安裝和初步設定 Hexo，以及如何用它來建立和發布你的第一篇部落格文章。</p>
 <p>開始介紹之前，先分享也是由hexo架構的網站，一起看看hexo的可能性～</p>
-<p><a target="_blank" rel="noopener" href="https://www.hexschool.com/">https://www.hexschool.com/</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.hexschool.com/">Hexschool</a></p>
 <p>好，開始！</p>
 <h3 id="環境準備"><a href="#環境準備" class="headerlink" title="環境準備"></a>環境準備</h3><h5 id="1-安裝-Node-js"><a href="#1-安裝-Node-js" class="headerlink" title="1. 安裝 Node.js"></a>1. 安裝 <a target="_blank" rel="noopener" href="http://nodejs.org/">Node.js</a></h5><p>Hexo 是基於 Node.js 開發的，安裝 Node.js 可以讓我們使用 npm（Node Package Manager）來管理所需的套件。</p>
 <h5 id="2-安裝-Git"><a href="#2-安裝-Git" class="headerlink" title="2. 安裝 Git"></a>2. 安裝 <a target="_blank" rel="noopener" href="https://git-scm.com/">Git</a></h5><p>Hexo 的設定及部署需要使用到 Git，以管理和上傳你的部落格文章和設定。</p>
@@ -125,13 +125,13 @@
 <p><img src="https://firebasestorage.googleapis.com/v0/b/blog-1d76a.appspot.com/o/3_sidebar-files.jpg?alt=media&token=6d14cf25-1647-45fe-906e-551c154b67bd" alt="3_sidebar-files.jpg"></p>
 <h5 id="3-進入你的部落格目錄，並安裝需要的套件。輸入以下命令："><a href="#3-進入你的部落格目錄，並安裝需要的套件。輸入以下命令：" class="headerlink" title="3. 進入你的部落格目錄，並安裝需要的套件。輸入以下命令："></a>3. 進入你的部落格目錄，並安裝需要的套件。輸入以下命令：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd blog-example</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
 
-<p>cd 是進入文件夾的意思，一定進入建好的Hexo文件夾再往下操作喔。</p>
+<p>cd 是進入文件夾的意思，請確保進入建好的Hexo文件夾再往下操作喔。</p>
 <p>這樣你的 Hexo 部落格就建立好了</p>
 <h5 id="4-接下來你可以用以下命令來啟動你的部落格伺服器，然後點開terminal中的網址，通常是-http-localhost-4000-，就可以看到你的部落格了："><a href="#4-接下來你可以用以下命令來啟動你的部落格伺服器，然後點開terminal中的網址，通常是-http-localhost-4000-，就可以看到你的部落格了：" class="headerlink" title="4. 接下來你可以用以下命令來啟動你的部落格伺服器，然後點開terminal中的網址，通常是 http://localhost:4000 ，就可以看到你的部落格了："></a>4. 接下來你可以用以下命令來啟動你的部落格伺服器，然後點開terminal中的網址，通常是 <code>http://localhost:4000</code> ，就可以看到你的部落格了：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://firebasestorage.googleapis.com/v0/b/blog-1d76a.appspot.com/o/4_server.jpg?alt=media&token=2f38e0f6-6d3d-4127-ac27-f31cf0ced9bd" alt="4_server.jpg"></p>
 <p><img src="https://firebasestorage.googleapis.com/v0/b/blog-1d76a.appspot.com/o/5_hexo_preview.jpg?alt=media&token=abc750ba-b535-4c40-93b3-dfd543940ac2" alt="5_hexo_preview.jpg"></p>
-<p>Voila！你可以開始寫你的第一篇文章了。</p>
+<p>Voila！可以開始寫你的第一篇文章囉。</p>
 <h3 id="寫你的第一篇文章"><a href="#寫你的第一篇文章" class="headerlink" title="寫你的第一篇文章"></a>寫你的第一篇文章</h3><p>在 Hexo 中，你的部落格文章會被放在 <code>source/_posts</code> 目錄下。你可以使用以下命令來建立一篇新的文章：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;我的第一篇文章&quot;</span><br></pre></td></tr></table></figure>
 
@@ -145,11 +145,9 @@
 <h3 id="Hexo-部署到-GitHub"><a href="#Hexo-部署到-GitHub" class="headerlink" title="Hexo 部署到 GitHub"></a>Hexo 部署到 GitHub</h3><p><em>如果你還不太認識GitHub不知怎麼開始，請先看<a target="_blank" rel="noopener" href="https://docs.github.com/en/get-started">這邊</a>～</em></p>
 <p>部署到 GitHub 的流程主要有三個步驟：</p>
 <h5 id="1-在-GitHub-上建立一個新的-repository。"><a href="#1-在-GitHub-上建立一個新的-repository。" class="headerlink" title="1. 在 GitHub 上建立一個新的 repository。"></a>1. 在 GitHub 上建立一個新的 repository。</h5><p>這個 repository 的名稱必須是 <code>你的 GitHub 用戶名.github.io</code>。例如，如果你的 GitHub 用戶名是 abc，那麼你的 repository 的名稱就應該是 <code>abc.github.io</code>。</p>
-<pre><code>我原以為這個repo的名字可以任意取，但原來作為個人網站用途的話，這樣的命名規則是為了確保你的網站可以直接去到 `https://username.github.io` 這個域名。
-
-並且，看到 [Ray的這篇hexo教學文](https://israynotarray.com/hexo/20190411/932826160/) 提到：
-
-&gt; 另外請不要將部落格架設在資料夾內，例如我最近最常看到的架站方式就是 `自己名稱.github.io/blog` 這種方式架站會有極高的可能性遇到一些怪問題，以下都是目前有人跟我反應的
+<p>我原以為這個repo的名字可以任意取，但原來作為個人網站用途的話，這樣的命名規則是為了確保你的網站可以直接去到 <code>https://username.github.io</code> 這個域名。</p>
+<p>並且，看到 <a target="_blank" rel="noopener" href="https://israynotarray.com/hexo/20190411/932826160/">Ray的這篇hexo教學文</a> 提到：</p>
+<pre><code>&gt; 另外請不要將部落格架設在資料夾內，例如我最近最常看到的架站方式就是 `自己名稱.github.io/blog` 這種方式架站會有極高的可能性遇到一些怪問題，以下都是目前有人跟我反應的
 &gt; 
 &gt; - CSS &amp; JS 出現問題
 &gt; - 文章無法正常顯示
@@ -157,16 +155,14 @@
 &gt; 
 &gt; 所以強烈建議部落格建立在根目錄上就好，就像我的 [部落格](https://github.com/hsiangfeng/hsiangfeng.github.io) 一樣，這樣子你可以少踩一點雷唷
 &gt; 
-
-我第一個個人網站repo就是取名blog…雖然目前還未有什麼問題，但為了不出錯，在這個範例中我們還是聽取建議吧 XD
-
-![6_git_repo.jpg](https://firebasestorage.googleapis.com/v0/b/blog-1d76a.appspot.com/o/6_git_repo.jpg?alt=media&amp;token=680fcc40-d927-48d7-96f4-c8e20925287f)
 </code></pre>
+<p>我第一個個人網站repo就是取名blog…雖然目前還未有什麼問題，但為了不出錯，在這個範例中我們還是聽取建議吧 XD</p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/blog-1d76a.appspot.com/o/6_git_repo.jpg?alt=media&token=680fcc40-d927-48d7-96f4-c8e20925287f" alt="6_git_repo.jpg"></p>
 <h5 id="2-上面的步驟完成後，回到vscode，在你的-Hexo-部落格文件找到設定檔-config-yml-，設定你的部署-repository。在最下方的-deploy-選項設定為以下內容："><a href="#2-上面的步驟完成後，回到vscode，在你的-Hexo-部落格文件找到設定檔-config-yml-，設定你的部署-repository。在最下方的-deploy-選項設定為以下內容：" class="headerlink" title="2. 上面的步驟完成後，回到vscode，在你的 Hexo 部落格文件找到設定檔 _config.yml ，設定你的部署 repository。在最下方的 deploy 選項設定為以下內容："></a>2. 上面的步驟完成後，回到vscode，在你的 Hexo 部落格文件找到設定檔 <code>_config.yml</code> ，設定你的部署 repository。在最下方的 <code>deploy</code> 選項設定為以下內容：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/username/username.github.io.git</span><br><span class="line">  branch: gh-pages  # 或者你希望部署到的其他分支</span><br></pre></td></tr></table></figure>
 
-<p>第16行的url也要記得改成你的repo網址</p>
 <p>username記得改為你的用戶名</p>
 <p><img src="https://firebasestorage.googleapis.com/v0/b/blog-1d76a.appspot.com/o/7_config.jpg?alt=media&token=03e2ea85-b1dd-430d-a677-bac86dcaff96" alt="7_config.jpg"></p>
+<p>第16行的url也要改成你的repo網址<br><img src="https://firebasestorage.googleapis.com/v0/b/blog-1d76a.appspot.com/o/7-1_config.jpg?alt=media&token=a9386e8b-d15f-4aee-8f09-c70d4aad7546" alt="7-1_config.jpg"></p>
 <h5 id="3-接著要安裝git插件"><a href="#3-接著要安裝git插件" class="headerlink" title="3. 接著要安裝git插件"></a>3. 接著要安裝git插件</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
 
 <h5 id="4-在終端機中，使用以下命令來部署你的部落格到-GitHub："><a href="#4-在終端機中，使用以下命令來部署你的部落格到-GitHub：" class="headerlink" title="4. 在終端機中，使用以下命令來部署你的部落格到 GitHub："></a>4. 在終端機中，使用以下命令來部署你的部落格到 GitHub：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
@@ -176,12 +172,24 @@
 <p>之後再有修改網站內容，在deploy之前需要：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean // 清除快取和以生成的靜態頁面</span><br><span class="line">hexo generate // 生成靜態頁面</span><br></pre></td></tr></table></figure>
 
+<p>回到你的GitHub repo頁面並刷新，可以看到文件已經在上面了。</p>
+<ol>
+<li><p>現在來開啟GitHub Pages。點選 Settings，拉到最下方的 GitHub Pages，在 Source 選擇 gh-pages branch，然後點選 Save。</p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/blog-1d76a.appspot.com/o/8_gitpages_setting1.jpg?alt=media&token=8acbe05d-1c15-4526-a0c7-e43c24334cb9" alt="8_gitpages_setting1.jpg"></p>
+<p> <img src="https://firebasestorage.googleapis.com/v0/b/blog-1d76a.appspot.com/o/9_gitpages_setting2.jpg?alt=media&token=afc7bb66-bd45-47f2-a8fe-8758207f670a" alt="9_gitpages_setting2.jpg"></p>
+</li>
+</ol>
+<p>在瀏覽器中輸入 <code>https://你的 GitHub 用戶名.github.io</code> 就可以看到你的部落格嚕。</p>
+<h3 id="自定義你的部落格"><a href="#自定義你的部落格" class="headerlink" title="自定義你的部落格"></a>自定義你的部落格</h3><p>雖然 Hexo 有很多的主題可以選擇，但是我們肯定還是希望自己的部落格是自己的形狀。那麼可以修改_config-yml 文件來自定義你的部落格的設定。<br>在 -config.yml 中，你可以設定你的部溶格的標題、描述、語言、主題等設定。你也可以設定你的部落格的導航欄、側邊欄、底部欄等界面元素。</p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/blog-1d76a.appspot.com/o/10_costumise_config.jpg?alt=media&token=1c7fb2d1-0287-459e-ae19-1d912da0a67d" alt="10_costumise_config.jpg"></p>
+<p>此外，你也可以為你的部落格添加插件來擴展其功能。Hexo 支持許多插件，例如可以讓你添加圖片輪播、社交分享按鈕、評論系統等功能。</p>
 <p>以上就是如何使用 Hexo 建立和部署你的部落格的全部基本步驟。希望這篇文章可以幫助你順利地建立你的 Hexo 部落格，並將其部署到 GitHub。</p>
+<p>一起快快樂樂賣肝啦(..•˘ᴗ˘•..)</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jing607.github.io/blog/2024/06/06/build-hexo/" data-id="clx3mpvv3000117zofxb4cl1z" data-title="從零開始用Hexo建立部落格" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://jing607.github.io/blog/2024/06/06/build-hexo/" data-id="clx3wy1vz0003c5zogdyq0n5h" data-title="從零開始用Hexo建立部落格" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -241,7 +249,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jing607.github.io/blog/2024/05/28/md-practice/" data-id="clx3mpvvd000817zo4bzfdowg" data-title="Markdown’s syntax practice" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://jing607.github.io/blog/2024/05/28/md-practice/" data-id="clx3wy1vx0002c5zo619o6jcm" data-title="Markdown’s syntax practice" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -315,7 +323,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jing607.github.io/blog/2024/05/21/hexo-commands/" data-id="clx3mpvv7000317zo9wdnbcsj" data-title="Hexo commands" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://jing607.github.io/blog/2024/05/21/hexo-commands/" data-id="clx3wy1w5000ac5zo28n13vmx" data-title="Hexo commands" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -368,7 +376,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jing607.github.io/blog/2024/05/21/hello-world/" data-id="clx3mpvv6000217zoclmqezaz" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://jing607.github.io/blog/2024/05/21/hello-world/" data-id="clx3wy1vv0001c5zochm647de" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
