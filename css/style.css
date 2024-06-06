@@ -1344,3 +1344,13 @@ pre .javascript .function {
   margin-right: 5px;
   display: inline-block;
 }
+.fullPage #main {
+  width: 100%;
+  float: none;
+  margin: 0;
+}
+.fullPage .article-meta,
+.fullPage .article-header,
+.fullPage .article-footer {
+  display: none;
+}
