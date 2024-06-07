@@ -81,6 +81,138 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-inline-block-el" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/06/08/inline-block-el/" class="article-date">
+  <time class="dt-published" datetime="2024-06-07T22:08:09.000Z" itemprop="datePublished">2024-06-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2024/06/08/inline-block-el/">分不清區塊元素與行內元素？讓我們一起來解惑！</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>作為一名初階前端工程師，了解 HTML 元素的基本分類是非常重要的。區塊元素(block)和行內元素(inline)是兩種基本的 HTML 元素類型，弄清它們的特點和用法能讓你的網頁佈局更精確、更符合預期。</p>
+<p>接下來，讓我們逐步了解這些元素的區別及其應用。</p>
+<h3 id="區塊元素是什麼？要注意什麼？"><a href="#區塊元素是什麼？要注意什麼？" class="headerlink" title="區塊元素是什麼？要注意什麼？"></a>區塊元素是什麼？要注意什麼？</h3><p><strong>區塊元素（Block Elements）</strong> 通常用於建立網頁的大結構，分隔主要內容區塊，構建頁面佈局。</p>
+<p><strong>特點</strong>：</p>
+<ul>
+<li><strong>獨占一行</strong>：區塊元素總是從新行開始，並佔據其父容器的全部寬度。無論設定寬度大小，都會自動換行。</li>
+<li><strong>控制尺寸</strong>：你可以控制區塊元素的高度、寬度、行高以及上下左右的邊距和內距。</li>
+<li><strong>典型應用</strong>：適合用來構建頁面的大框架或段落內容。</li>
+</ul>
+<p><strong>常見區塊元素</strong>：</p>
+<ul>
+<li><code>&lt;div&gt;</code>：用來分組或包裹其他元素。</li>
+<li><code>&lt;p&gt;</code>：段落。</li>
+<li><code>&lt;h1&gt;</code> 至 <code>&lt;h6&gt;</code>：標題。</li>
+<li><code>&lt;ul&gt;</code>、<code>&lt;ol&gt;</code> 和 <code>&lt;li&gt;</code>：列表及其項目。</li>
+<li><code>&lt;table&gt;</code>：表格。</li>
+</ul>
+<p><strong>注意事項</strong>：</p>
+<ul>
+<li><p>區塊元素會佔據整行，下一個元素會顯示在新的一行。</p>
+</li>
+<li><p>適合用來容納其他區塊元素或行內元素，形成頁面結構。</p>
+<p>  <strong>例子</strong>：</p>
+<p>  <img src="https://firebasestorage.googleapis.com/v0/b/blog-1d76a.appspot.com/o/2_1_block-el.jpg?alt=media&token=37c31fe8-58a9-4174-96d9-b4999921a321" alt="block-el"></p>
+</li>
+</ul>
+<h3 id="行內元素是什麼？要注意什麼？"><a href="#行內元素是什麼？要注意什麼？" class="headerlink" title="行內元素是什麼？要注意什麼？"></a>行內元素是什麼？要注意什麼？</h3><p><strong>行內元素（Inline Elements）</strong> 用於標記和格式化小範圍的文本或其他行內元素，通常不會單獨形成結構，而是作為區塊元素的一部分。</p>
+<p><strong>特點</strong>：</p>
+<ul>
+<li><strong>與其他元素同一行</strong>：行內元素不會從新行開始，與相鄰的行內元素排列在同一行，直到排不下才換行。</li>
+<li><strong>無法設置尺寸</strong>：行內元素的寬度和高度隨內容變化，設置寬高屬性無效。</li>
+<li><strong>典型應用</strong>：適合用來標記和格式化頁面內的文本片段。</li>
+</ul>
+<p><strong>常見行內元素</strong>：</p>
+<ul>
+<li><code>&lt;span&gt;</code>：用來包裹文本或其他行內元素。</li>
+<li><code>&lt;a&gt;</code>：超連結。</li>
+<li><code>&lt;img&gt;</code>：圖像。</li>
+<li><code>&lt;em&gt;</code> 和 <code>&lt;strong&gt;</code>：分別用來標示強調和加粗的文本。</li>
+<li><code>&lt;input&gt;</code>：輸入框。</li>
+</ul>
+<p><strong>注意事項</strong>：</p>
+<ul>
+<li><p>行內元素不能設置寬高，只有左右的 <code>padding</code> 和 <code>margin</code> 有效，<strong>上下無效</strong>。</p>
+</li>
+<li><p>適合用來標記小範圍的文本或其他行內元素。</p>
+<p>  <strong>例子</strong>：</p>
+<p>  <img src="https://firebasestorage.googleapis.com/v0/b/blog-1d76a.appspot.com/o/2_2_inline-el.jpg?alt=media&token=9c32353c-dece-4a9a-b4bc-7e8cc02049d4" alt="延續上圖的設定，再加上`.highlight`的樣式。"></p>
+<p>  加上 <code>.highlight</code> 的設定，可以發現即使空白空間再大，區塊元素 <code>&lt;p&gt;</code> 還是自己佔據整行，而行內元素<code>&lt;span&gt;</code>、<code>&lt;em&gt;</code> 和 <code>&lt;strong&gt;</code>則是根據內容的寬度無縫接續在一起；且寬高等設定是無效的。</p>
+<p>  為了更清楚說明行內元素左右的 <code>padding</code> 和 <code>margin</code> 有效但<strong>上下無效，</strong>我再把<code>.highlight</code> 的背景顏色調透明，加上 <code>padding</code> 來看看：</p>
+<p>  <img src="https://firebasestorage.googleapis.com/v0/b/blog-1d76a.appspot.com/o/2_3_inline-el_padding.jpg?alt=media&token=9d46c427-1d16-4de3-a931-f39ecb0e8948" alt="`height`和`padding`上下位置並沒有沒有被影響。"></p>
+<p>  雖然看起來這個highlight元素是透過<code>padding</code> 把高寬面積撐開了，可實際上只有左右橫向有佔到空間，上下位置其實是沒有被影響的。</p>
+<p>  初學時常因為明明調整了<code>padding</code> 或 <code>margin</code>，可是它的上下位置總是雷打不動而感到困擾，現在終於知道為什麼了啦！</p>
+</li>
+</ul>
+<br>
+
+<h3 id="那麼分不清區塊元素與行內元素會發生哪些問題？"><a href="#那麼分不清區塊元素與行內元素會發生哪些問題？" class="headerlink" title="那麼分不清區塊元素與行內元素會發生哪些問題？"></a>那麼分不清區塊元素與行內元素會發生哪些問題？</h3><ul>
+<li><strong>布局錯亂</strong>：例如，把一個需要獨占一行的標題設置為行內元素，可能會導致布局混亂。</li>
+<li><strong>樣式失效</strong>：例如，給行內元素設置寬度和高度會無效，導致樣式無法按預期顯示。（如上圖所示）</li>
+<li><strong>排版不一致</strong>：區塊元素和行內元素的排版特性不同，混用可能導致排版不一致。</li>
+</ul>
+<p><strong>問題例子</strong>：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 錯誤用法：應該使用 &lt;div&gt; 而不是 &lt;span&gt; 來包裹段落 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>標題<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>這是一段文字。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><em>來考考自己這樣寫會發生什麼問題～☺︎</em></p>
+<h3 id="解決辦法"><a href="#解決辦法" class="headerlink" title="解決辦法"></a>解決辦法</h3><ol>
+<li>**使用 <code>display: inline-block</code>**：同時具備行內元素的排列特性和區塊元素的尺寸控制能力。</li>
+<li>**使用 <code>display: block</code>**：使行內元素變為區塊元素，完全控制上下左右的 <code>padding</code> 和 <code>margin</code>。</li>
+<li>**使用 <code>line-height</code>**：增加行內元素的上下間距。</li>
+<li><strong>使用偽元素</strong>：用 <strong><code>::before</code></strong> 和 <strong><code>::after</code></strong> 增加行內元素周圍的空間。</li>
+</ol>
+<p><strong>例子</strong>：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.pseudo-element-example</span><span class="selector-pseudo">::before</span>,</span><br><span class="line"><span class="selector-class">.pseudo-element-example</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">  <span class="attribute">display</span>: inline-block;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">10px</span> <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">vertical-align</span>: middle;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>偽元素之後會寫到，這裡不做說明囉</em></p>
+<br>
+
+<h3 id="延伸知識點：空元素"><a href="#延伸知識點：空元素" class="headerlink" title="延伸知識點：空元素"></a>延伸知識點：空元素</h3><p><strong>空元素（Empty Elements）</strong>：</p>
+<ul>
+<li><strong>沒有內容</strong>：空元素在開始標籤中閉合，沒有內容。</li>
+<li><strong>單標籤</strong>：只有開始標籤，沒有結束標籤。</li>
+</ul>
+<p><strong>常見空元素</strong>：</p>
+<ul>
+<li><code>&lt;br&gt;</code>：換行。</li>
+<li><code>&lt;hr&gt;</code>：水平線。</li>
+<li><code>&lt;img&gt;</code>：圖像。</li>
+<li><code>&lt;input&gt;</code>：輸入框。</li>
+<li><code>&lt;link&gt;</code>：鏈接外部資源。</li>
+<li><code>&lt;meta&gt;</code>：元數據。</li>
+</ul>
+<p>了解區塊元素和行內元素的特點及用法，並且能靈活應用這些元素，會讓你的網頁設計更具條理和美觀。</p>
+<p>那就明天再見了 ✨</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jing607.github.io/blog/2024/06/08/inline-block-el/" data-id="clx59rcox0004ulzocul713te" data-title="分不清區塊元素與行內元素？讓我們一起來解惑！" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/css/" rel="tag">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/frontend/" rel="tag">frontend</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/html/" rel="tag">html</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-build-hexo" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/blog/2024/06/06/build-hexo/" class="article-date">
@@ -187,10 +319,12 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jing607.github.io/blog/2024/06/06/build-hexo/" data-id="clx4vr87i00016gzo2urg4ryd" data-title="從零開始用Hexo建立部落格" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://jing607.github.io/blog/2024/06/06/build-hexo/" data-id="clx59rcos0001ulzo1byi7ih3" data-title="從零開始用Hexo建立部落格" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/hexo/" rel="tag">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/productivity/" rel="tag">productivity</a></li></ul>
+
     </footer>
   </div>
   
@@ -247,7 +381,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jing607.github.io/blog/2024/05/28/md-practice/" data-id="clx4vr87m00046gzo3b4ua4hu" data-title="Markdown’s syntax practice" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://jing607.github.io/blog/2024/05/28/md-practice/" data-id="clx59rcoz0006ulzoe0iqh3m6" data-title="Markdown’s syntax practice" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -321,7 +455,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jing607.github.io/blog/2024/05/21/hexo-commands/" data-id="clx4vr87m00036gzoeb023qjs" data-title="Hexo commands" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://jing607.github.io/blog/2024/05/21/hexo-commands/" data-id="clx59rcov0002ulzoem72heyo" data-title="Hexo commands" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -374,7 +508,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jing607.github.io/blog/2024/05/21/hello-world/" data-id="clx4vr87k00026gzoav7xbkff" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://jing607.github.io/blog/2024/05/21/hello-world/" data-id="clx59rcoy0005ulzo59db5n1c" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -399,7 +533,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/markdown/" rel="tag">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/tag/" rel="tag">tag</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/test/" rel="tag">test</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/css/" rel="tag">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/frontend/" rel="tag">frontend</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/html/" rel="tag">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/markdown/" rel="tag">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/productivity/" rel="tag">productivity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/tag/" rel="tag">tag</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/test/" rel="tag">test</a></li></ul>
     </div>
   </div>
 
@@ -409,7 +543,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/blog/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/blog/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/blog/tags/tag/" style="font-size: 10px;">tag</a> <a href="/blog/tags/test/" style="font-size: 20px;">test</a>
+      <a href="/blog/tags/css/" style="font-size: 10px;">css</a> <a href="/blog/tags/frontend/" style="font-size: 10px;">frontend</a> <a href="/blog/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/blog/tags/html/" style="font-size: 10px;">html</a> <a href="/blog/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/blog/tags/productivity/" style="font-size: 10px;">productivity</a> <a href="/blog/tags/tag/" style="font-size: 10px;">tag</a> <a href="/blog/tags/test/" style="font-size: 20px;">test</a>
     </div>
   </div>
 
@@ -429,6 +563,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/blog/2024/06/08/inline-block-el/">分不清區塊元素與行內元素？讓我們一起來解惑！</a>
+          </li>
         
           <li>
             <a href="/blog/2024/06/06/build-hexo/">從零開始用Hexo建立部落格</a>
