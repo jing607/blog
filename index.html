@@ -81,6 +81,84 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-margin-0-auto" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/06/12/margin-0-auto/" class="article-date">
+  <time class="dt-published" datetime="2024-06-11T23:13:49.000Z" itemprop="datePublished">2024-06-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2024/06/12/margin-0-auto/">使用 margin: 0 auto 讓你的容器一秒水平居中</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>今天，我們來聊聊如何使用 <code>margin: 0 auto</code> 這個簡單但強大的 CSS 屬性，來實現容器的水平居中。</p>
+<p>這個方法就像是前端開發中的魔法咒語，只需要簡單地施展一下，你的容器就會乖乖地待在頁面的正中間。</p>
+<p>通常我們會使用在像 <code>.container</code> 或 <code>.wrap</code> 這樣的外層容器上。這些容器元素通常是頁面中的主要佈局元素，用來包裹其他內容，使它們在視窗中水平居中。</p>
+<p>在實際開發中，我們常常會將主要佈局元素，如頁面主容器或包裹內容的容器設置為水平居中。這樣可以確保頁面在不同寬度的設備上都能保持良好的視覺效果。就像我們看到的絕大部分網頁整體都是置中、兩邊留白的。</p>
+<br>
+
+<h3 id="為什麼-margin-0-auto-能讓容器水平居中？"><a href="#為什麼-margin-0-auto-能讓容器水平居中？" class="headerlink" title="為什麼 margin: 0 auto 能讓容器水平居中？"></a>為什麼 <code>margin: 0 auto</code> 能讓容器水平居中？</h3><p>首先，我們要知道 <code>margin: 0 auto</code> 做了什麼：</p>
+<ul>
+<li><code>margin: 0 auto</code> 設定了容器的上下外邊距（margin-top 和 margin-bottom）為 0，左右外邊距（margin-left 和 margin-right）為自動（auto）。</li>
+<li>瀏覽器會根據容器的寬度和父元素的寬度，自動計算並分配左右邊距，從而實現水平居中。</li>
+</ul>
+<br>
+
+<h3 id="使用條件"><a href="#使用條件" class="headerlink" title="使用條件"></a>使用條件</h3><p>這個方法並不是對所有元素都有效，使用前你需要確保：</p>
+<ol>
+<li><strong>設定寬度</strong>：容器必須有一個明確的寬度（例如 <code>width: 80%</code> 或 <code>width: 600px</code>）。如果容器的寬度為 <code>100%</code> 或未指定，<code>margin: 0 auto</code> 將不起作用，因為容器已經佔滿整行。</li>
+<li><strong>區塊元素（Block Element）</strong>：容器需要是塊級元素。對於行內元素，這個咒語不起作用。</li>
+</ol>
+<br>
+
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>讓我們看看這個咒語是如何發揮神奇效果的：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;content&quot;</span>&gt;</span></span><br><span class="line">     i&#x27;m a content block inside .container and centered horizontally! yay!</span><br><span class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">40%</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">20px</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#1cd8d4</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.content</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#b6f5f4</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">50px</span>;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在這個例子中，<code>.container</code> 的寬度設置為 <code>40%</code>，使用 <code>margin: 0 auto</code> 來實現水平居中。</p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/blog-1d76a.appspot.com/o/5_1-margin0auto.jpg?alt=media&token=5199111b-7c4f-4739-bde2-ff773518aa33" alt="子元素會跟著父元素一同置中。（文字預設是靠左的，為了說明這邊特別加入`text-align:center`）"></p>
+<br>
+
+<h3 id="可能遇到的坑"><a href="#可能遇到的坑" class="headerlink" title="可能遇到的坑"></a>可能遇到的坑</h3><p>即使 <code>margin: 0 auto</code> 很強大，它也有一些前提條件和限制：</p>
+<ol>
+<li><strong>父元素的寬度</strong>：這個設定能夠正常作用，需要父元素有足夠的寬度。假如父元素的寬度非常小或被浮動元素（<code>float</code>）影響，子容器可能無法正確居中。</li>
+<li><strong>行內元素（Inline Block）</strong>：如前所述，<code>margin: 0 auto</code> 對於行內元素不起作用。如果需要水平居中行內元素，可以考慮使用 <code>text-align: center</code>。</li>
+<li><strong>浮動元素</strong>：如果容器使用了浮動（<code>float</code>），那麼 <code>margin: 0 auto</code> 也不會起作用。可以考慮使用 Flexbox 或 Grid 來實現居中。</li>
+</ol>
+<br>
+
+<h3 id="最後"><a href="#最後" class="headerlink" title="最後"></a>最後</h3><p><code>margin: 0 auto</code> 是一個實現容器水平居中的簡單且高效的方法，但它也需要滿足一些前提條件：容器必須有明確的寬度，並且是區塊元素。了解這些前提條件可以幫助你在設計頁面佈局時更加得心應手。</p>
+<p>希望這篇文章能幫助你更好地理解和使用 <code>margin: 0 auto</code>，讓你開始寫頁面時一開頭就身心舒暢。</p>
+<p>Happy coding!</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jing607.github.io/blog/2024/06/12/margin-0-auto/" data-id="clxb1irz90006rkzofj4028g2" data-title="使用 margin: 0 auto 讓你的容器一秒水平居中" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-box-sizing" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/blog/2024/06/11/box-sizing/" class="article-date">
@@ -138,7 +216,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jing607.github.io/blog/2024/06/11/box-sizing/" data-id="clx9n0fqi0001brzo6zl46ni0" data-title="掌握 box-sizing：讓 CSS 佈局更輕鬆" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://jing607.github.io/blog/2024/06/11/box-sizing/" data-id="clxb1irz30001rkzobmao8she" data-title="掌握 box-sizing：讓 CSS 佈局更輕鬆" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -218,7 +296,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jing607.github.io/blog/2024/06/08/hexo-commands/" data-id="clx9n0fqp0004brzoadbzhfrv" data-title="Hexo 常用命令指南" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://jing607.github.io/blog/2024/06/08/hexo-commands/" data-id="clxb1irz70004rkzof2r3fy0m" data-title="Hexo 常用命令指南" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -349,7 +427,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jing607.github.io/blog/2024/06/08/inline-block-el/" data-id="clx9n0fqu0005brzo6g8ndnxn" data-title="分不清區塊元素與行內元素？讓我們一起來解惑！" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://jing607.github.io/blog/2024/06/08/inline-block-el/" data-id="clxb1irz80005rkzo4432gv9h" data-title="分不清區塊元素與行內元素？讓我們一起來解惑！" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -469,7 +547,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jing607.github.io/blog/2024/06/06/build-hexo/" data-id="clx9n0fql0002brzodehe4rwt" data-title="從零開始用Hexo建立部落格" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://jing607.github.io/blog/2024/06/06/build-hexo/" data-id="clxb1irz50002rkzockhaa4gh" data-title="從零開始用Hexo建立部落格" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -531,7 +609,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jing607.github.io/blog/2024/05/28/md-practice/" data-id="clx9n0fqz000ibrzo8sgs0e7m" data-title="Markdown’s syntax practice" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://jing607.github.io/blog/2024/05/28/md-practice/" data-id="clxb1irz90008rkzofhdv0pay" data-title="Markdown’s syntax practice" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -590,6 +668,10 @@
       <ul>
         
           <li>
+            <a href="/blog/2024/06/12/margin-0-auto/">使用 margin: 0 auto 讓你的容器一秒水平居中</a>
+          </li>
+        
+          <li>
             <a href="/blog/2024/06/11/box-sizing/">掌握 box-sizing：讓 CSS 佈局更輕鬆</a>
           </li>
         
@@ -603,10 +685,6 @@
         
           <li>
             <a href="/blog/2024/06/06/build-hexo/">從零開始用Hexo建立部落格</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2024/05/28/md-practice/">Markdown’s syntax practice</a>
           </li>
         
       </ul>
