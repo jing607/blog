@@ -81,6 +81,113 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-flexbox" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/06/15/flexbox/" class="article-date">
+  <time class="dt-published" datetime="2024-06-14T23:34:21.000Z" itemprop="datePublished">2024-06-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2024/06/15/flexbox/">掌握 Flexbox，讓佈局簡單又有趣</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>今天要介紹的 CSS 中的 Flexbox 佈局的基本特性。這是每個前端開發者都應該掌握的技能之一。這篇文章會帶你一步步了解 Flexbox 的基本概念和應用，讓你能夠在實際開發中靈活使用。</p>
+<h2 id="為什麼需要-Flexbox？"><a href="#為什麼需要-Flexbox？" class="headerlink" title="為什麼需要 Flexbox？"></a>為什麼需要 Flexbox？</h2><p>在過去，我們常常使用 <code>float</code>、<code>inline-block</code> 等方式來佈局網頁，這些方法雖然能解決部分問題，但往往需要寫很多額外的 CSS。而 Flexbox 專為佈局設計，使我們可以更簡單、高效地完成各種佈局需求。</p>
+<h2 id="Flexbox-基本概念"><a href="#Flexbox-基本概念" class="headerlink" title="Flexbox 基本概念"></a>Flexbox 基本概念</h2><p>Flexbox 由兩個主要部分組成：容器（container）和項目（items）。我們首先需要將一個元素設置為 Flex 容器，然後它的直接子元素就會成為 Flex 項目。</p>
+<h3 id="Flex-容器"><a href="#Flex-容器" class="headerlink" title="Flex 容器"></a>Flex 容器</h3><p>要將一個元素設置為 Flex 容器，只需給它設置 <code>display: flex</code>。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;item&quot;</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;item&quot;</span>&gt;</span>2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;item&quot;</span>&gt;</span>3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">700px</span>;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  ...</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>容器內的每個子元素都是 Flex 項目，這些項目會自動排列成一行。</p>
+<p>如果父元素有設定高度，那麼容器內的子元素的高度會跟著父元素的高度變動，除非另外設定 <code>padding</code> 、<code>margin</code> 或高度。</p>
+<p>如果父元素沒有設定高度，而是其中一個或多個子元素設定了高度，或是裡面的元素把子元素撐開，那其他未設定高度的子元素會隨著<strong>最高</strong>的那個兄弟姊妹變動。如圖：</p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/blog-1d76a.appspot.com/o/6_1-flex1.jpg?alt=media&token=d53519fb-4207-48a4-b954-1ef9ec9a7c81" alt="所有物件中只有`.item1` 和 `.item2` 設定了高度，而其他未設定高度的 item 則是跟著最高的 `.item2` 同高。"></p>
+<p>所有物件中只有<code>.item1</code> 和 <code>.item2</code> 設定了高度，而其他未設定高度的 item 則是跟著最高的 <code>.item2</code> 同高。</p>
+<h2 id="決定-flexbox-走向的軸線"><a href="#決定-flexbox-走向的軸線" class="headerlink" title="決定 flexbox 走向的軸線"></a>決定 flexbox 走向的軸線</h2><p>flexbox可以做到讓元素橫向對齊、縱向對齊、等比排列等多種彈性佈局。要更透徹理解flexbox如何運作，在介紹它各種屬性前，不得不先了解一下它的兩根相互垂直的軸線——<strong>主軸（main axis）</strong>和<strong>交叉軸（cross axis）</strong>。</p>
+<p>主軸由 <code>flex-derection</code> 定義，決定是元素是水平或是垂直排列，還有是否為反向排列。它的預設是水平排列。（下面會列出它的選項）。補充：如果使用的語言是像英文中文等從左到右的語言，則默認起始順序也是從左到右；但若是阿拉伯語等從右到左的語言，默認起始順序會是從右到左。</p>
+<p>而交叉軸垂直於主軸，所以會根據主軸是橫向或縱向而決定。</p>
+<p><code>align-items</code> 就是控制交叉軸對對齊方式，預設是 <code>stretch</code> 拉伸。這就是為什麼上面的例子會介紹到在未設定子元素（交叉軸的）高度的情況下，子元素們的高度會自動拉伸填滿父容器，因為這就是交叉軸的預設值。</p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/blog-1d76a.appspot.com/o/6_2-flex-axis.jpg?alt=media&token=3c864f0a-78f3-4a59-9f23-e803c1d10543" alt="這是主軸和交錯軸都是默認值的樣子"></p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/blog-1d76a.appspot.com/o/6_3-flex-axis-column.jpg?alt=media&token=9cd21380-ce29-487a-9339-3361bdefb2ee" alt="把主軸轉為縱向排列，交叉軸則對應轉為橫向的。"></p>
+<h2 id="容器屬性"><a href="#容器屬性" class="headerlink" title="容器屬性"></a>容器屬性</h2><h3 id="flex-direction"><a href="#flex-direction" class="headerlink" title="flex-direction"></a>flex-direction</h3><p><code>flex-direction</code> 決定了項目在容器中的排列方向。默認情況下，項目會水平排列（<code>row</code>）。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">flex-direction</span>: row; <span class="comment">/* 可選 row（水平）、row-reverse（反向水平）、column（垂直）、column-reverse（反向垂直） */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="justify-content"><a href="#justify-content" class="headerlink" title="justify-content"></a>justify-content</h3><p><code>justify-content</code> 用來控制項目在主軸（默認為水平軸）上的對齊方式。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">justify-content</span>: center; <span class="comment">/* 可選 flex-start（左對齊）、flex-end（右對齊）、center（居中）、space-between（兩端對齊，項目之間均勻分布）、space-around（項目均勻分布，周圍留有空間） */</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="align-items"><a href="#align-items" class="headerlink" title="align-items"></a>align-items</h3><p><code>align-items</code> 控制項目在交叉軸（默認為垂直軸）上的對齊方式。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">align-items</span>: center; <span class="comment">/* 可選 flex-start（頂端對齊）、flex-end（底端對齊）、center（居中）、baseline（基線對齊）、stretch（拉伸填充） */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="flex-wrap"><a href="#flex-wrap" class="headerlink" title="flex-wrap"></a>flex-wrap</h3><p>默認情況下，所有項目會在一行內排列。如果希望項目換行，可以使用 <code>flex-wrap</code>。預設為不換行。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">flex-wrap</span>: wrap; <span class="comment">/* 可選 nowrap（不換行）、wrap（換行）、wrap-reverse（反向換行） */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="flex-flow"><a href="#flex-flow" class="headerlink" title="flex-flow"></a>flex-flow</h3><p><code>flex-flow</code> 是 <code>flex-direction</code> 和 <code>flex-wrap</code> 的簡寫形式。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">flex-flow</span>: row wrap; <span class="comment">/* 水平排列，並允許換行 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="align-content"><a href="#align-content" class="headerlink" title="align-content"></a>align-content</h3><p>當有多行項目時，<code>align-content</code> 用來控制這些行在交叉軸上的對齊方式。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">align-content</span>: center; <span class="comment">/* 可選 flex-start、flex-end、center、space-between、space-around、stretch */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br><br></p>
+<h2 id="其他較為進階的項目屬性"><a href="#其他較為進階的項目屬性" class="headerlink" title="其他較為進階的項目屬性"></a>其他較為進階的項目屬性</h2><h3 id="order"><a href="#order" class="headerlink" title="order"></a>order</h3><p><code>order</code> 用來控制項目的排列順序。默認情況下，所有 items 的 <code>order</code> 值都是 0，即按照源代碼順序呈現。更詳細說明參考 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_flexible_box_layout/Ordering_flex_items">https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_flexible_box_layout/Ordering_flex_items</a> 。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">order</span>: <span class="number">1</span>; <span class="comment">/* 數值越小，項目越靠前 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="flex-grow"><a href="#flex-grow" class="headerlink" title="flex-grow"></a>flex-grow</h3><p><code>flex-grow</code> 定義了 items 的擴展比率。默認值為 0，表示 items 不會放大。</p>
+<p>前面提到 flex 特性是在不特別設定尺寸的情況下，或是當所有的子元素都有相同的<code>flex-grow</code> 系數時，子元素在空間分配上是相等的。</p>
+<p>如果加了 <code>flex-grow</code> 就會在父元素有空間剩餘的時候，重新分配元素們的比例。它通常與以下提到的<code>flex-shrink</code> 和 <code>flex-basis</code> 共用，一起寫在<code>flex</code> 裡。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">flex-grow</span>: <span class="number">1</span>; <span class="comment">/* 數值越大，項目擴展空間越多 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="flex-shrink"><a href="#flex-shrink" class="headerlink" title="flex-shrink"></a>flex-shrink</h3><p><code>flex-shrink</code> 定義了項目的收縮比率。默認值為 1，表示項目會收縮以適應容器大小。</p>
+<p>提醒：<code>flex-shrink</code> 只在子元素加總的寬度超出父容器的情況下起作用；而縮減的比例是從多出來的那一段來分配，目的是讓所有子元素與父容器寬度相同。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">flex-shrink</span>: <span class="number">1</span>; <span class="comment">/* 數值越大，項目收縮空間越多 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="flex-basis"><a href="#flex-basis" class="headerlink" title="flex-basis"></a>flex-basis</h3><p><code>flex-basis</code> 定義了項目的基礎大小。可以先理解為主軸的寬&#x2F;長度；如果前面有定義父容器主軸的寬&#x2F;長度的話則會被<code>flex-basis</code> 蓋掉。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">flex-basis</span>: <span class="number">100px</span>; <span class="comment">/* 可以設置具體大小或百分比 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="flex"><a href="#flex" class="headerlink" title="flex"></a>flex</h3><p><code>flex</code> 是 <code>flex-grow</code>、<code>flex-shrink</code> 和 <code>flex-basis</code> 的簡寫。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">flex</span>: <span class="number">1</span> <span class="number">1</span> <span class="number">100px</span>; <span class="comment">/* 1 表示擴展比率，1 表示收縮比率，100px 表示基礎大小 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<br>
+講這麼多，當然還是實作最能了解透徹，分享幾個相關的網站邊玩邊體會看看：
+
+<p>釐清概念用 -</p>
+<p>六角提供的用起來非常清楚：<a target="_blank" rel="noopener" href="https://codepen.io/peiqun/pen/WYzzYX">https://codepen.io/peiqun/pen/WYzzYX</a></p>
+<p><a target="_blank" rel="noopener" href="https://demo.agektmr.com/flexbox/">https://demo.agektmr.com/flexbox/</a></p>
+<p><a target="_blank" rel="noopener" href="https://codepen.io/justd/pen/yydezN">https://codepen.io/justd/pen/yydezN</a></p>
+<p>練習用 -</p>
+<p>沒錯又是六角做的小遊戲：<a target="_blank" rel="noopener" href="https://hexschool.github.io/flexbox-pirate/index.html#/">https://hexschool.github.io/flexbox-pirate/index.html#/</a></p>
+<p>這個很可愛：<a target="_blank" rel="noopener" href="https://flexboxfroggy.com/">https://flexboxfroggy.com/</a></p>
+<p>Flexbox 是一個非常強大的工具，能夠讓我們更輕鬆地實現各種佈局需求。在實際項目中靈活應用這些技巧，讓你的網頁佈局更加簡單高效。</p>
+<p>快去玩玩上面分享的網站～越早熟悉它，越早體驗到排版的樂趣 ◍•ᴗ•◍</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jing607.github.io/blog/2024/06/15/flexbox/" data-id="clxfc6zpa000160zo1djj6diw" data-title="掌握 Flexbox，讓佈局簡單又有趣" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/css/" rel="tag">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/frontend/" rel="tag">frontend</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-margin-0-auto" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/blog/2024/06/12/margin-0-auto/" class="article-date">
@@ -147,7 +254,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jing607.github.io/blog/2024/06/12/margin-0-auto/" data-id="clxb1irz90006rkzofj4028g2" data-title="使用 margin: 0 auto 讓你的容器一秒水平居中" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://jing607.github.io/blog/2024/06/12/margin-0-auto/" data-id="clxfc6zpi000860zof75c3ib6" data-title="使用 margin: 0 auto 讓你的容器一秒水平居中" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -216,7 +323,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jing607.github.io/blog/2024/06/11/box-sizing/" data-id="clxb1irz30001rkzobmao8she" data-title="掌握 box-sizing：讓 CSS 佈局更輕鬆" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://jing607.github.io/blog/2024/06/11/box-sizing/" data-id="clxfc6zpc000260zo1kefctcc" data-title="掌握 box-sizing：讓 CSS 佈局更輕鬆" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -296,7 +403,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jing607.github.io/blog/2024/06/08/hexo-commands/" data-id="clxb1irz70004rkzof2r3fy0m" data-title="Hexo 常用命令指南" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://jing607.github.io/blog/2024/06/08/hexo-commands/" data-id="clxfc6zpg000560zo549ahgol" data-title="Hexo 常用命令指南" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -427,7 +534,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jing607.github.io/blog/2024/06/08/inline-block-el/" data-id="clxb1irz80005rkzo4432gv9h" data-title="分不清區塊元素與行內元素？讓我們一起來解惑！" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://jing607.github.io/blog/2024/06/08/inline-block-el/" data-id="clxfc6zph000660zo1tn0bd2d" data-title="分不清區塊元素與行內元素？讓我們一起來解惑！" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -547,7 +654,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jing607.github.io/blog/2024/06/06/build-hexo/" data-id="clxb1irz50002rkzockhaa4gh" data-title="從零開始用Hexo建立部落格" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://jing607.github.io/blog/2024/06/06/build-hexo/" data-id="clxfc6zpf000460zog3fmdvhv" data-title="從零開始用Hexo建立部落格" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -609,7 +716,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jing607.github.io/blog/2024/05/28/md-practice/" data-id="clxb1irz90008rkzofhdv0pay" data-title="Markdown’s syntax practice" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://jing607.github.io/blog/2024/05/28/md-practice/" data-id="clxfc6zpp000o60zo1k9x1zg5" data-title="Markdown’s syntax practice" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -668,6 +775,10 @@
       <ul>
         
           <li>
+            <a href="/blog/2024/06/15/flexbox/">掌握 Flexbox，讓佈局簡單又有趣</a>
+          </li>
+        
+          <li>
             <a href="/blog/2024/06/12/margin-0-auto/">使用 margin: 0 auto 讓你的容器一秒水平居中</a>
           </li>
         
@@ -681,10 +792,6 @@
         
           <li>
             <a href="/blog/2024/06/08/inline-block-el/">分不清區塊元素與行內元素？讓我們一起來解惑！</a>
-          </li>
-        
-          <li>
-            <a href="/blog/2024/06/06/build-hexo/">從零開始用Hexo建立部落格</a>
           </li>
         
       </ul>
