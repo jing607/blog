@@ -81,9 +81,141 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-flexbox" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-7_pseudo-el-before-after" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/blog/2024/06/15/flexbox/" class="article-date">
+    <a href="/blog/2024/06/19/7_pseudo-el-before-after/" class="article-date">
+  <time class="dt-published" datetime="2024-06-19T01:45:13.000Z" itemprop="datePublished">2024-06-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/blog/2024/06/19/7_pseudo-el-before-after/">探索 CSS 偽元素：::before 和 ::after</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>應讀者的要求（誰？），今天要講 CSS 偽元素中的 <code>::before</code> 和 <code>::after</code>。</p>
+<p>這兩個偽元素在網頁設計中非常有用，可以用來在元素的內容前後插入額外的內容，而不需要改變 HTML 結構。</p>
+<p>讓我們深入了解這些強大的工具，並看看如何在實際應用中使用它們。</p>
+<p>先附上以下範例的程式碼 <a target="_blank" rel="noopener" href="https://codepen.io/hjxu/pen/VwOQMBO?editors=1100">https://codepen.io/hjxu/pen/VwOQMBO?editors=1100</a></p>
+<h3 id="偽元素是什麼？"><a href="#偽元素是什麼？" class="headerlink" title="偽元素是什麼？"></a>偽元素是什麼？</h3><p>CSS 偽元素是用來設計文檔的特定部分的元素。例如，<code>::before</code> 和 <code>::after</code> 可以用來在一個元素的內容之前或之後插入內容。它們通常用來裝飾元素，增加視覺效果。</p>
+<h3 id="使用上需要注意的地方"><a href="#使用上需要注意的地方" class="headerlink" title="使用上需要注意的地方"></a>使用上需要注意的地方</h3><ol>
+<li><strong><code>content</code> 屬性</strong>：<code>content</code> 是偽元素的必需屬性。如果沒有這個屬性，偽元素將不會顯示。即使是插入空字符串，也必須明確設置。</li>
+<li><strong><code>display</code> 屬性</strong>：默認情況下，<code>::before</code> 和 <code>::after</code> 是行內元素。如果需要改變這個行為，可以設置 <code>display</code> 屬性，如 <code>inline-block</code> 或 <code>block</code>。</li>
+<li><strong>層級問題</strong>：偽元素的層級是基於父元素的，因此可以通過 <code>z-index</code> 和 <code>position</code> 屬性來控制顯示順序。</li>
+</ol>
+<h3 id="before-和-after-的基本用法"><a href="#before-和-after-的基本用法" class="headerlink" title="::before 和 ::after 的基本用法"></a><code>::before</code> 和 <code>::after</code> 的基本用法</h3><p>這兩個偽元素的語法非常簡單，只需要在選擇器後面加上 <code>::before</code> 或 <code>::after</code>，然後使用 <code>content</code> 屬性來指定插入的內容。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.element</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&quot;前置內容&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.element</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&quot;後置內容&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>讓我們通過一個簡單的例子來看看它們的實際應用。</p>
+<p>HTML：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;element&quot;</span>&gt;</span>這是一段文字。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>CSS：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.element</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&quot;🎉&quot;</span>;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">    <span class="attribute">margin-right</span>: <span class="number">8px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.element</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&quot;🎈&quot;</span>;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">    <span class="attribute">margin-left</span>: <span class="number">8px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在這個例子中，我們在段落元素的內容前後分別插入了一個派對圖示和一個氣球圖示。效果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">🎉 這是一段文字。 🎈</span><br></pre></td></tr></table></figure>
+
+<p>我們可以用偽元素來創建更多複雜的效果。假設我們想為一個按鈕添加一個漂亮的漸變背景和一個陰影效果。</p>
+<p>HTML：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">&quot;fancy-button&quot;</span>&gt;</span>點擊我<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>CSS：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.fancy-button</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">10px</span> <span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line">    <span class="attribute">border</span>: none;</span><br><span class="line">    <span class="attribute">cursor</span>: pointer;</span><br><span class="line">    <span class="attribute">background-color</span>: transparent;</span><br><span class="line">    <span class="attribute">color</span>: white;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.fancy-button</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(<span class="number">45deg</span>, <span class="number">#f06</span>, <span class="number">#f90</span>);</span><br><span class="line">    <span class="attribute">z-index</span>: -<span class="number">1</span>;</span><br><span class="line">    <span class="attribute">transition</span>: all <span class="number">0.3s</span> ease;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.fancy-button</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">5px</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">5px</span>;</span><br><span class="line">    <span class="attribute">right</span>: <span class="number">5px</span>;</span><br><span class="line">    <span class="attribute">bottom</span>: <span class="number">5px</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.2</span>);</span><br><span class="line">    <span class="attribute">z-index</span>: -<span class="number">2</span>;</span><br><span class="line">    <span class="attribute">transition</span>: all <span class="number">0.3s</span> ease;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.fancy-button</span><span class="selector-pseudo">:hover</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">1.1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.fancy-button</span><span class="selector-pseudo">:hover</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">0.9</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>這段 CSS 使用 <code>::before</code> 和 <code>::after</code> 偽元素為按鈕添加了漸變背景和陰影效果，並且在懸停時會有一個放大的動畫效果：</p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/blog-1d76a.appspot.com/o/7_1-fancy_btn.jpg?alt=media&token=f8a15950-9dba-4ec3-9031-a0708dc520c8" alt="fancy btn"></p>
+<h3 id="偽元素常見應用場景"><a href="#偽元素常見應用場景" class="headerlink" title="偽元素常見應用場景"></a>偽元素常見應用場景</h3><ol>
+<li><strong>裝飾線條、圖標</strong>：為標題或段落添加裝飾線條或背景；在按鈕或導航鏈接前後添加圖標。</li>
+<li><strong>清除浮動：</strong></li>
+</ol>
+<p>在使用浮動布局時，浮動元素的父容器高度可能會崩塌，導致布局錯亂。因為 float 屬性顧名思義就是浮動到上面一層，像被抬起來一樣，那麼接下來的佈局自然會往上鑽。又或者說，是讓浮動元素的高度被忽略。</p>
+<p>使用 <code>::after</code> 偽元素可以幫助清除浮動，也就是讓浮動元素的高度被看見，後面的元素就不敢往前擠了。</p>
+<p>舉個栗子🌰：</p>
+<p>HTML：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;clearfix&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box float-left&quot;</span>&gt;</span>float 1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;box float-right&quot;</span>&gt;</span>float 2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;bottom&quot;</span>&gt;</span>bottom<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>CSS：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.float-left</span> &#123;</span><br><span class="line">  <span class="attribute">float</span>: left;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.float-right</span> &#123;</span><br><span class="line">  <span class="attribute">float</span>: right;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">clear</span>: both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在這個例子中，<code>.clearfix</code> 容器內部的兩個浮動元素的浮動被清除，容器高度得以恢復，避免布局錯亂。</p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/blog-1d76a.appspot.com/o/7_2-float.jpg?alt=media&token=1ce38869-a36a-43dd-8ffe-33fc6573376f" alt="float1 和 float 2 區塊是懸浮狀態時，bottom 區塊就上移"></p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/blog-1d76a.appspot.com/o/7_3-float_clear.jpg?alt=media&token=18db556d-6944-47f3-904e-629415a555e7" alt="加了 .clearfix 之後，bottom回復原位"></p>
+<h3 id="4-hover-時輔助文本和提示訊息"><a href="#4-hover-時輔助文本和提示訊息" class="headerlink" title="4. hover 時輔助文本和提示訊息"></a>4. hover 時輔助文本和提示訊息</h3><p>使用 <code>::before</code> 和 <code>::after</code> 偽元素可以創建簡單的工具提示（tooltip），增加用戶交互體驗。</p>
+<p>示例：</p>
+<p>HTML：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;tooltip&quot;</span>&gt;</span>hover me</span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;tooltip-text&quot;</span>&gt;</span>tooltip content<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>CSS：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.tooltip</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">    <span class="attribute">cursor</span>: pointer;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.tooltip</span> <span class="selector-class">.tooltip-text</span> &#123;</span><br><span class="line">    <span class="attribute">visibility</span>: hidden;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">120px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: black;</span><br><span class="line">    <span class="attribute">color</span>: white;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">5px</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">5px</span> <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">z-index</span>: <span class="number">1</span>;</span><br><span class="line">    <span class="attribute">bottom</span>: <span class="number">125%</span>; <span class="comment">/* 提示框出現在上方 */</span></span><br><span class="line">    <span class="attribute">left</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">margin-left</span>: -<span class="number">60px</span>;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">transition</span>: opacity <span class="number">0.3s</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.tooltip</span><span class="selector-pseudo">:hover</span> <span class="selector-class">.tooltip-text</span> &#123;</span><br><span class="line">    <span class="attribute">visibility</span>: visible;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.tooltip</span> <span class="selector-class">.tooltip-text</span><span class="selector-pseudo">::after</span> &#123; <span class="comment">/* 此為對話框的箭頭 */</span></span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">margin-left</span>: -<span class="number">5px</span>;</span><br><span class="line">    <span class="attribute">border-width</span>: <span class="number">5px</span>;</span><br><span class="line">    <span class="attribute">border-style</span>: solid;</span><br><span class="line">    <span class="attribute">border-color</span>: black transparent transparent transparent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在這個例子中，當用戶懸停在 <code>.tooltip</code> 元素上時，<code>.tooltip-text</code> 元素會顯示，並且帶有一個向下的箭頭（由 <code>::after</code> 偽元素創建）。這種效果常用於顯示更多訊息或提示。</p>
+<p><img src="https://firebasestorage.googleapis.com/v0/b/blog-1d76a.appspot.com/o/7_4-tooltip_hover.jpg?alt=media&token=16741892-0fd2-4914-87f7-0afa635cdc98" alt="上面黑色對話框為 hover 時的效果"></p>
+<h3 id="5-優化圖片加載失敗的顯示效果"><a href="#5-優化圖片加載失敗的顯示效果" class="headerlink" title="5. 優化圖片加載失敗的顯示效果"></a>5. 優化圖片加載失敗的顯示效果</h3><p>當圖片加載失敗時，瀏覽器會顯示一個破裂的圖片圖標和 <code>alt</code> 文本，這樣會讓頁面看起來不太美觀。我們可以通過使用偽元素 <code>::before</code> 和 <code>::after</code> 來美化這種情況，讓頁面在圖片加載失敗時看起來更整潔。</p>
+<p>方法大致是</p>
+<ol>
+<li><strong>設置父容器</strong>：<ul>
+<li>使用 <code>position: relative;</code> 設置父容器，並設置固定的寬度和高度。</li>
+</ul>
+</li>
+<li><strong>設置圖片</strong>：<ul>
+<li>確保圖片寬度和高度填滿父容器，並設置為塊級元素。</li>
+</ul>
+</li>
+<li>**使用偽元素 <code>::before</code> 和 <code>::after</code>**：<ul>
+<li><code>::before</code>：用來顯示 <code>alt</code> 屬性中的文本。通過絕對定位，使文本垂直和水平居中顯示在圖片的中間。</li>
+<li><code>::after</code>：用來顯示一個破裂圖片的圖標。通過絕對定位，使圖標垂直和水平居中顯示在圖片的中間。</li>
+</ul>
+</li>
+<li><strong>處理無效的 <code>src</code> 屬性</strong>：<ul>
+<li>使用 CSS 選擇器 <code>:not([src])</code>、<code>[src=&quot;&quot;]</code> 等處理當圖片 <code>src</code> 無效或空白的情況。</li>
+<li>當圖片 URL 無效時，顯示偽元素，隱藏原始圖片。</li>
+</ul>
+</li>
+</ol>
+<h3 id="偽元素的優缺點"><a href="#偽元素的優缺點" class="headerlink" title="偽元素的優缺點"></a>偽元素的優缺點</h3><p><strong>優點</strong></p>
+<ol>
+<li><strong>不改變 HTML 結構</strong>：使用 <code>::before</code> 和 <code>::after</code> 可以在不改變 HTML 結構的情況下增加視覺效果，保持代碼整潔。</li>
+<li><strong>靈活性</strong>：可以用來添加圖標、裝飾線條、背景等，極大地增強了設計的靈活性。</li>
+<li><strong>動畫效果</strong>：配合 CSS 動畫，可以創建豐富的互動效果。</li>
+</ol>
+<p><strong>缺點</strong></p>
+<ol>
+<li><strong>兼容性問題</strong>：雖然大多數現代瀏覽器都支持 <code>::before</code> 和 <code>::after</code>，但在一些舊瀏覽器中可能會有兼容性問題。</li>
+<li><strong>樣式限制</strong>：偽元素的內容受限於 CSS 的 <code>content</code> 屬性，不能包含複雜的 HTML 結構。</li>
+<li><strong>維護困難</strong>：大量使用偽元素可能會使樣式變得複雜，增加維護難度。</li>
+<li><strong>與 JavaScript 的交互</strong>：偽元素無法直接被 JavaScript 操控。要改變偽元素的樣式，必須改變其對應的 CSS 樣式。這意味著如果你需要偽元素與 JavaScript 互動，必須通過改變其父元素的樣式來間接實現。</li>
+</ol>
+<p>CSS 偽元素 <code>::before</code> 和 <code>::after</code> 是好用又非常容易上手的工具，可以用來增強網頁的視覺效果，而不需要改變 HTML 結構。適當使用可以讓網頁更豐富，你也來試試吧～</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jing607.github.io/blog/2024/06/19/7_pseudo-el-before-after/" data-id="clxl6j1pq000tghzoeknf2xp7" data-title="探索 CSS 偽元素：::before 和 ::after" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-6_flexbox" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/blog/2024/06/15/6_flexbox/" class="article-date">
   <time class="dt-published" datetime="2024-06-14T23:34:21.000Z" itemprop="datePublished">2024-06-15</time>
 </a>
     
@@ -95,7 +227,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/06/15/flexbox/">掌握 Flexbox，讓佈局簡單又有趣</a>
+      <a class="p-name article-title" href="/blog/2024/06/15/6_flexbox/">掌握 Flexbox，讓佈局簡單又有趣</a>
     </h1>
   
 
@@ -173,7 +305,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jing607.github.io/blog/2024/06/15/flexbox/" data-id="clxfx8m4i0001fvzo9w7h9dd8" data-title="掌握 Flexbox，讓佈局簡單又有趣" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://jing607.github.io/blog/2024/06/15/6_flexbox/" data-id="clxl6j1pk0008ghzoed764q44" data-title="掌握 Flexbox，讓佈局簡單又有趣" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -187,9 +319,9 @@
 
 
   
-    <article id="post-margin-0-auto" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-5_margin-0-auto" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/blog/2024/06/12/margin-0-auto/" class="article-date">
+    <a href="/blog/2024/06/12/5_margin-0-auto/" class="article-date">
   <time class="dt-published" datetime="2024-06-11T23:13:49.000Z" itemprop="datePublished">2024-06-12</time>
 </a>
     
@@ -201,7 +333,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/06/12/margin-0-auto/">使用 margin: 0 auto 讓你的容器一秒水平居中</a>
+      <a class="p-name article-title" href="/blog/2024/06/12/5_margin-0-auto/">使用 margin: 0 auto 讓你的容器一秒水平居中</a>
     </h1>
   
 
@@ -253,7 +385,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jing607.github.io/blog/2024/06/12/margin-0-auto/" data-id="clxfx8m4m0004fvzo0fwe0m9z" data-title="使用 margin: 0 auto 讓你的容器一秒水平居中" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://jing607.github.io/blog/2024/06/12/5_margin-0-auto/" data-id="clxl6j1pj0006ghzo9jgy2fvx" data-title="使用 margin: 0 auto 讓你的容器一秒水平居中" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -265,9 +397,9 @@
 
 
   
-    <article id="post-box-sizing" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-4_box-sizing" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/blog/2024/06/11/box-sizing/" class="article-date">
+    <a href="/blog/2024/06/11/4_box-sizing/" class="article-date">
   <time class="dt-published" datetime="2024-06-10T23:36:26.000Z" itemprop="datePublished">2024-06-11</time>
 </a>
     
@@ -279,7 +411,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/06/11/box-sizing/">掌握 box-sizing：讓 CSS 佈局更輕鬆</a>
+      <a class="p-name article-title" href="/blog/2024/06/11/4_box-sizing/">掌握 box-sizing：讓 CSS 佈局更輕鬆</a>
     </h1>
   
 
@@ -322,7 +454,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jing607.github.io/blog/2024/06/11/box-sizing/" data-id="clxfx8m4k0002fvzo22fycjqr" data-title="掌握 box-sizing：讓 CSS 佈局更輕鬆" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://jing607.github.io/blog/2024/06/11/4_box-sizing/" data-id="clxl6j1pj0005ghzo1l3z11o0" data-title="掌握 box-sizing：讓 CSS 佈局更輕鬆" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -336,9 +468,9 @@
 
 
   
-    <article id="post-hexo-commands" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-3_hexo-commands" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/blog/2024/06/08/hexo-commands/" class="article-date">
+    <a href="/blog/2024/06/08/3_hexo-commands/" class="article-date">
   <time class="dt-published" datetime="2024-06-08T18:04:53.000Z" itemprop="datePublished">2024-06-08</time>
 </a>
     
@@ -350,7 +482,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/06/08/hexo-commands/">Hexo 常用命令指南</a>
+      <a class="p-name article-title" href="/blog/2024/06/08/3_hexo-commands/">Hexo 常用命令指南</a>
     </h1>
   
 
@@ -402,7 +534,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jing607.github.io/blog/2024/06/08/hexo-commands/" data-id="clxfx8m4n0005fvzofnlc5m6m" data-title="Hexo 常用命令指南" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://jing607.github.io/blog/2024/06/08/3_hexo-commands/" data-id="clxl6j1pi0004ghzoewr97b6g" data-title="Hexo 常用命令指南" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -414,9 +546,9 @@
 
 
   
-    <article id="post-inline-block-el" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-2_inline-block-el" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/blog/2024/06/08/inline-block-el/" class="article-date">
+    <a href="/blog/2024/06/08/2_inline-block-el/" class="article-date">
   <time class="dt-published" datetime="2024-06-07T22:08:09.000Z" itemprop="datePublished">2024-06-08</time>
 </a>
     
@@ -428,7 +560,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/06/08/inline-block-el/">分不清區塊元素與行內元素？讓我們一起來解惑！</a>
+      <a class="p-name article-title" href="/blog/2024/06/08/2_inline-block-el/">分不清區塊元素與行內元素？讓我們一起來解惑！</a>
     </h1>
   
 
@@ -533,7 +665,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jing607.github.io/blog/2024/06/08/inline-block-el/" data-id="clxfx8m4s000lfvzo0j4bhard" data-title="分不清區塊元素與行內元素？讓我們一起來解惑！" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://jing607.github.io/blog/2024/06/08/2_inline-block-el/" data-id="clxl6j1pd0001ghzobm87830x" data-title="分不清區塊元素與行內元素？讓我們一起來解惑！" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -547,9 +679,9 @@
 
 
   
-    <article id="post-build-hexo" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-1_build-hexo" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/blog/2024/06/06/build-hexo/" class="article-date">
+    <a href="/blog/2024/06/06/1_build-hexo/" class="article-date">
   <time class="dt-published" datetime="2024-06-06T16:53:30.000Z" itemprop="datePublished">2024-06-06</time>
 </a>
     
@@ -561,7 +693,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/blog/2024/06/06/build-hexo/">從零開始用Hexo建立部落格</a>
+      <a class="p-name article-title" href="/blog/2024/06/06/1_build-hexo/">從零開始用Hexo建立部落格</a>
     </h1>
   
 
@@ -653,7 +785,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jing607.github.io/blog/2024/06/06/build-hexo/" data-id="clxfx8m4r000kfvzo6fdn8ud0" data-title="從零開始用Hexo建立部落格" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://jing607.github.io/blog/2024/06/06/1_build-hexo/" data-id="clxl6j1pg0002ghzo9fk5ebvj" data-title="從零開始用Hexo建立部落格" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -715,7 +847,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://jing607.github.io/blog/2024/05/28/md-practice/" data-id="clxfx8m4n0006fvzo8cne2ohq" data-title="Markdown’s syntax practice" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="https://jing607.github.io/blog/2024/05/28/md-practice/" data-id="clxl6j1pl0009ghzoguey0sil" data-title="Markdown’s syntax practice" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -774,23 +906,23 @@
       <ul>
         
           <li>
-            <a href="/blog/2024/06/15/flexbox/">掌握 Flexbox，讓佈局簡單又有趣</a>
+            <a href="/blog/2024/06/19/7_pseudo-el-before-after/">探索 CSS 偽元素：::before 和 ::after</a>
           </li>
         
           <li>
-            <a href="/blog/2024/06/12/margin-0-auto/">使用 margin: 0 auto 讓你的容器一秒水平居中</a>
+            <a href="/blog/2024/06/15/6_flexbox/">掌握 Flexbox，讓佈局簡單又有趣</a>
           </li>
         
           <li>
-            <a href="/blog/2024/06/11/box-sizing/">掌握 box-sizing：讓 CSS 佈局更輕鬆</a>
+            <a href="/blog/2024/06/12/5_margin-0-auto/">使用 margin: 0 auto 讓你的容器一秒水平居中</a>
           </li>
         
           <li>
-            <a href="/blog/2024/06/08/hexo-commands/">Hexo 常用命令指南</a>
+            <a href="/blog/2024/06/11/4_box-sizing/">掌握 box-sizing：讓 CSS 佈局更輕鬆</a>
           </li>
         
           <li>
-            <a href="/blog/2024/06/08/inline-block-el/">分不清區塊元素與行內元素？讓我們一起來解惑！</a>
+            <a href="/blog/2024/06/08/3_hexo-commands/">Hexo 常用命令指南</a>
           </li>
         
       </ul>
